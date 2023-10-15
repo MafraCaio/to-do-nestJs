@@ -20,4 +20,7 @@ export class CreateToDoDto {
   @IsString()
   @MaxLength(250)
   comments: string;
+
+  @IsString()
+  status: string;
 }

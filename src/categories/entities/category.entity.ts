@@ -3,5 +3,5 @@ export class Category {
   name: string;
   description: string;
   user_id: number;
-  status?: string;
+  status: string;
 }

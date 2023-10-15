@@ -13,4 +13,7 @@ export class CreateCategoryDto {
 
   @IsInt()
   user_id: number;
+
+  @IsString()
+  status: string;
 }

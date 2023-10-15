@@ -1,7 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
+import { User } from '@prisma/client';
 
 @Controller('categories')
 export class CategoriesController {
@@ -13,8 +23,8 @@ export class CategoriesController {
   }
 
   @Get()
-  findAll() {
-    return this.categoriesService.findAll();
+  findAll(@CurrentUser() user: User) {
+    return this.categoriesService.findAll(user.id);
   }
 
   @Get(':id')
@@ -22,8 +32,11 @@ export class CategoriesController {
     return this.categoriesService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCategoryDto: UpdateCategoryDto) {
+  @Put(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updateCategoryDto: UpdateCategoryDto,
+  ) {
     return this.categoriesService.update(+id, updateCategoryDto);
   }
 

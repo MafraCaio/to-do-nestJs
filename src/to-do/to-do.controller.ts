@@ -1,9 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ToDoService } from './to-do.service';
 import { CreateToDoDto } from './dto/create-to-do.dto';
 import { UpdateToDoDto } from './dto/update-to-do.dto';
+import { User } from '@prisma/client';
+import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 
-@Controller('to-do')
+@Controller('task')
 export class ToDoController {
   constructor(private readonly toDoService: ToDoService) {}
 
@@ -13,8 +23,8 @@ export class ToDoController {
   }
 
   @Get()
-  findAll() {
-    return this.toDoService.findAll();
+  findAll(@CurrentUser() user: User) {
+    return this.toDoService.findAll(user.id);
   }
 
   @Get(':id')
@@ -22,7 +32,7 @@ export class ToDoController {
     return this.toDoService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateToDoDto: UpdateToDoDto) {
     return this.toDoService.update(+id, updateToDoDto);
   }
