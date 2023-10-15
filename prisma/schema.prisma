@@ -17,9 +17,31 @@ model User {
   password    String    @db.VarChar(60)
   name        String    @db.VarChar(250)
   surname     String?   @db.VarChar(250)
-  cpf         String?   @db.VarChar(14)
   phone       String?   @db.VarChar(20)
   status      String    @default("active")
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
+}
+
+model Categories {
+  id          Int       @default(autoincrement()) @id
+  name        String    @db.VarChar(250)
+  description String    @db.VarChar(250)
+  user_id     Int       @db.Int
+  status      String    @db.VarChar(50)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+}
+
+model Tasks {
+  id            Int       @default(autoincrement()) @id
+  title         String    @db.VarChar(250)
+  description   String    @db.VarChar(250)
+  categories_id Int       @db.Int
+  status        String    @db.VarChar(50)
+  due_date      DateTime  @db.Date
+  priority      String    @db.VarChar(100)
+  comments      String    @db.VarChar(250)
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
 }

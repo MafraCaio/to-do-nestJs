@@ -27,4 +27,8 @@ export class CreateUserDto extends User {
   @IsString()
   @MaxLength(250)
   surname: string;
+
+  @IsString()
+  @MaxLength(20)
+  phone: string;
 }
