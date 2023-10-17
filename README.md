@@ -2,10 +2,17 @@
 Api de uma aplicação ToDo List
 Trabalho de Programação III - Sistemas de Informação Uniavan
 
+## RUN NPM INSTALL - MIGRATIONS - START PRODUCTION
+```bash
+$ npm run deploy
+```
+
+# OR
+
 ## Installation
 
 ```bash
-$ npm install
+$ npm ci
 ```
 
 ## Running the app

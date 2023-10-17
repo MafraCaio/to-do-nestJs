@@ -1,8 +1,8 @@
 {
   "name": "to-do-nest",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Api de uma aplicação ToDo List Trabalho de Programação III - Sistemas de Informação Uniavan",
+  "author": "Caio Henrique Mafra",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "deploy": "npm ci && npm run build && npx prisma migrate deploy && npm run start:prod"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

@@ -1,0 +1,23 @@
+Olá professor, segue o repositório do GitHub para clonar o projeto
+
+HTTPS: https://github.com/MafraCaio/to-do-nestJs.git
+
+Antes de iniciar o projeto precisa acessar o .ENV e configurar o DATABASE_URL. Similar ao exemplo abaixo
+DATABASE_URL="mysql://<USUARIO MYSQL>:<SENHA>@<IP DO SERVIDOR MYSQL>:<PORTA DO MYSQL>/to-to"
+
+
+Para rodar o projeto o Sr. pode utilizar um dos comandos abaixo, o primeiro comando é um comando
+personalizado que roda os outros 4 comandos. 
+
+$ npm run deploy
+
+OU
+
+$ npm ci
+$ npm run build 
+$ npx prisma migrate deploy 
+$ npm run start:prod
+
+Para testar o projeto primeiro deve se criar o usuário na rota de post /user
+Após isso realizar o login fazendo um post /auth/login
+Após isso voce pode usar o token de autenticação passando ele como bearer token nas demais rotas.
