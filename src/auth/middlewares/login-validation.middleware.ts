@@ -19,7 +19,7 @@ export class LoginValidationMiddleware implements NestMiddleware {
     const validations = await validate(loginRequestBody);
 
     if (validations.length) {
-      throw new BadRequestException(
+      return new BadRequestException(
         validations.reduce((acc, curr) => {
           return [...acc, ...Object.values(curr.constraints)];
         }, []),
