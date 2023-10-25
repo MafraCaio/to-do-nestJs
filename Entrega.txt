@@ -1,10 +1,11 @@
 Olá professor, segue o repositório do GitHub para clonar o projeto
 
+Aluno: Caio Henrique Mafra
+
 HTTPS: https://github.com/MafraCaio/to-do-nestJs.git
 
 Antes de iniciar o projeto precisa acessar o .ENV e configurar o DATABASE_URL. Similar ao exemplo abaixo
 DATABASE_URL="mysql://<USUARIO MYSQL>:<SENHA>@<IP DO SERVIDOR MYSQL>:<PORTA DO MYSQL>/to-to"
-
 
 Para rodar o projeto o Sr. pode utilizar um dos comandos abaixo, o primeiro comando é um comando
 personalizado que roda os outros 4 comandos. 
