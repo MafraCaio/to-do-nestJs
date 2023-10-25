@@ -41,6 +41,3 @@ CREATE TABLE `tasks` (
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- AddForeignKey
-ALTER TABLE `tasks` ADD CONSTRAINT `tasks_categories_id_fkey` FOREIGN KEY (`categories_id`) REFERENCES `categories`(`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
