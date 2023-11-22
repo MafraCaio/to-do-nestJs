@@ -1,9 +1,8 @@
 export class User {
   id?: number;
   email: string;
-  password: string;
+  google_uid: string;
   name: string;
-  surname: string;
   cpf?: string;
   phone?: string;
 }

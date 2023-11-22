@@ -14,7 +14,7 @@ export class UserService {
       // Fazemos o hash da senha para criar o novo usuário
       const data = {
         ...createUserDto,
-        password: await bcrypt.hash(createUserDto.password, 10),
+        google_uid: await bcrypt.hash(createUserDto.google_uid, 12),
       };
 
       const createdUser = await this.prisma.user.create({ data });
@@ -22,7 +22,7 @@ export class UserService {
       // Retornamos o status como 201
       response.status(HttpStatus.CREATED).json({
         ...createdUser,
-        password: undefined,
+        google_uid: undefined,
       });
     } catch (error) {
       // Em caso de erro retornamos erro 500
@@ -42,9 +42,8 @@ export class UserService {
         select: {
           id: true,
           name: true,
-          surname: true,
           email: true,
-          password: false,
+          google_uid: false,
           phone: true,
           status: true,
           created_at: true,
@@ -83,9 +82,8 @@ export class UserService {
         select: {
           id: true,
           name: true,
-          surname: true,
           email: true,
-          password: false,
+          google_uid: false,
           phone: true,
           status: true,
           created_at: true,
@@ -132,7 +130,7 @@ export class UserService {
       // Retornamos o status 202 junto com os dados atualizados
       response.status(HttpStatus.ACCEPTED).json({
         ...updatedUser,
-        password: undefined,
+        google_uid: undefined,
       });
     } catch (error) {
       // Em caso de erro retornamos erro 500
@@ -165,7 +163,7 @@ export class UserService {
       // Retornamos o status 202 e os dados desativados
       response.status(HttpStatus.ACCEPTED).json({
         ...disableUser,
-        password: undefined,
+        google_uid: undefined,
       });
     } catch (error) {
       // Em caso de erro retornamos erro 500

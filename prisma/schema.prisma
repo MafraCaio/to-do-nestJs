@@ -14,9 +14,8 @@ datasource db {
 model User {
   id          Int       @default(autoincrement()) @id
   email       String    @unique @db.VarChar(200)
-  password    String    @db.VarChar(60)
-  name        String    @db.VarChar(250)
-  surname     String?   @db.VarChar(250)
+  google_uid String    @db.VarChar(120)
+  name        String    @db.VarChar(500)
   phone       String?   @db.VarChar(20)
   status      String    @default("active")
   created_at  DateTime  @default(now())

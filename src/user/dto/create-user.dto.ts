@@ -1,11 +1,5 @@
 import { User } from '../entities/user.entity';
-import {
-  IsEmail,
-  IsString,
-  MinLength,
-  MaxLength,
-  Matches,
-} from 'class-validator';
+import { IsEmail, IsString, MinLength, MaxLength } from 'class-validator';
 
 export class CreateUserDto extends User {
   @IsEmail()
@@ -13,20 +7,13 @@ export class CreateUserDto extends User {
 
   @IsString()
   @MinLength(4)
-  @MaxLength(60)
-  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-    message: 'Senha muito fraca',
-  })
-  password: string;
+  @MaxLength(120)
+  google_uid: string;
 
   @IsString()
   @MinLength(2)
-  @MaxLength(250)
+  @MaxLength(500)
   name: string;
-
-  @IsString()
-  @MaxLength(250)
-  surname: string;
 
   @IsString()
   @MaxLength(20)

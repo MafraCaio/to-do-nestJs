@@ -13,19 +13,22 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string) {
+  async validateUser(email: string, google_uid: string) {
     try {
       // Buscamos o usuário com base no email informado no login
       const user = await this.userService.findByEmail(email);
 
       if (user) {
         // Realizamos a comparação da senha criptografada
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPasswordValid = await bcrypt.compare(
+          google_uid,
+          user.google_uid,
+        );
 
         if (isPasswordValid) {
           return {
             ...user,
-            password: undefined,
+            google_uid: undefined,
           };
         }
       }
