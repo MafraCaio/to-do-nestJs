@@ -11,10 +11,9 @@ import { LoginRequestBody } from './../models/login.body';
 export class LoginValidationMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
     const body = req.body;
-
     const loginRequestBody = new LoginRequestBody();
     loginRequestBody.email = body.email;
-    loginRequestBody.google_uid = body.google_uid;
+    loginRequestBody.password = body.googleToken;
 
     const validations = await validate(loginRequestBody);
 
