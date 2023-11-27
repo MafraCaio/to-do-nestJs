@@ -5,11 +5,10 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { ToDoModule } from './to-do/to-do.module';
-import { CategoriesModule } from './categories/categories.module';
 import * as cors from 'cors';
 
 @Module({
-  imports: [PrismaModule, UserModule, AuthModule, ToDoModule, CategoriesModule],
+  imports: [PrismaModule, UserModule, AuthModule, ToDoModule],
   controllers: [],
   providers: [
     {

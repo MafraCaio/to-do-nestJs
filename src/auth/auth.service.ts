@@ -63,7 +63,9 @@ export class AuthService {
 
         const jwtToken = this.jwtService.sign(payload);
 
-        response.status(HttpStatus.OK).json({ access_token: jwtToken });
+        response
+          .status(HttpStatus.OK)
+          .json({ ...user, access_token: jwtToken });
       } else {
         response.status(HttpStatus.UNAUTHORIZED).json({
           message: 'Endereço de email ou senha informado está incorreto',

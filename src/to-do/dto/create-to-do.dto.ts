@@ -6,12 +6,12 @@ export class CreateToDoDto {
   @MaxLength(250)
   title: string;
 
+  @IsInt()
+  user_id: number;
+
   @IsString()
   @MaxLength(250)
   description: string;
-
-  @IsInt()
-  categories_id: number;
 
   @IsString()
   @MaxLength(100)
@@ -20,6 +20,9 @@ export class CreateToDoDto {
   @IsString()
   @MaxLength(250)
   comments: string;
+
+  @IsInt()
+  order: number;
 
   @IsString()
   status: string;

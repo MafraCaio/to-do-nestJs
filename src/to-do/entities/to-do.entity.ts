@@ -1,9 +1,10 @@
 export class ToDo {
   id?: number;
+  user_id: number;
   title: string;
   description: string;
-  categories_id: number;
   status?: string;
   priority?: string;
+  order?: number;
   comments?: string;
 }

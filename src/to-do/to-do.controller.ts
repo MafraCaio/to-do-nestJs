@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Res,
+  Patch,
 } from '@nestjs/common';
 import { ToDoService } from './to-do.service';
 import { CreateToDoDto } from './dto/create-to-do.dto';
@@ -20,8 +21,12 @@ export class ToDoController {
   constructor(private readonly toDoService: ToDoService) {}
 
   @Post()
-  create(@Body() createToDoDto: CreateToDoDto, @Res() response: Response) {
-    return this.toDoService.create(createToDoDto, response);
+  create(
+    @Body() createToDoDto: CreateToDoDto,
+    @CurrentUser() user: User,
+    @Res() response: Response,
+  ) {
+    return this.toDoService.create(createToDoDto, user.id, response);
   }
 
   @Get()
@@ -37,19 +42,22 @@ export class ToDoController {
   @Put(':id')
   update(
     @Param('id') id: string,
-    @CurrentUser() user: User,
     @Body() updateToDoDto: UpdateToDoDto,
     @Res() response: Response,
   ) {
-    return this.toDoService.update(+id, user.id, updateToDoDto, response);
+    return this.toDoService.update(+id, updateToDoDto, response);
+  }
+
+  @Patch('/order')
+  updateOrder(
+    @Body() newOrders: { taskId: number; order: number }[],
+    @Res() response: Response,
+  ) {
+    return this.toDoService.updateTasksOrder(newOrders, response);
   }
 
   @Delete(':id')
-  remove(
-    @Param('id') id: string,
-    @CurrentUser() user: User,
-    @Res() response: Response,
-  ) {
-    return this.toDoService.remove(+id, user.id, response);
+  remove(@Param('id') id: string, @Res() response: Response) {
+    return this.toDoService.remove(+id, response);
   }
 }
