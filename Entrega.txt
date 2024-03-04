@@ -1,8 +1,11 @@
-Olá professor, segue o repositório do GitHub para clonar o projeto
+Olá professor, segue o repositório do GitHub para clonar o projeto do Front e do Back
 
 Aluno: Caio Henrique Mafra
 
-HTTPS: https://github.com/MafraCaio/to-do-nestJs.git
+Back:  https://github.com/MafraCaio/to-do-nestJs.git
+Front: https://github.com/MafraCaio/toDo-VueJs
+
+Instruções back
 
 Antes de iniciar o projeto precisa acessar o .ENV e configurar o DATABASE_URL. Similar ao exemplo abaixo
 DATABASE_URL="mysql://<USUARIO MYSQL>:<SENHA>@<IP DO SERVIDOR MYSQL>:<PORTA DO MYSQL>/to-to"
@@ -19,6 +22,10 @@ $ npm run build
 $ npx prisma migrate deploy 
 $ npm run start:prod
 
-Para testar o projeto primeiro deve se criar o usuário na rota de post /user
-Após isso realizar o login fazendo um post /auth/login
-Após isso voce pode usar o token de autenticação passando ele como bearer token nas demais rotas.
+Instruções Front
+
+Para rodar o projeto o Sr. pode utilizar o comando abaixo
+
+$ npm run dev 
+
+O projeto provavelmente vai rodar na porta 3729
